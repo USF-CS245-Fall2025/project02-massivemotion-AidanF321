@@ -1,0 +1,18 @@
+timerDelay = 5
+list = arraylist
+
+windowSizeX= 1024
+windowSizeY = 768
+
+genX = 0.15
+genY = 0.15
+bodySize = 10
+bodyMass = 1E21
+bodyVelocity = 7
+
+starPositionX = 512
+starPositionY = 384
+starSize = 30
+starMass = 2E29
+starVelocityX = 0
+starVelocityY = 0
