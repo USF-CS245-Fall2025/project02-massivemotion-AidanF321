@@ -71,15 +71,14 @@ public class MassiveMotion extends JPanel implements ActionListener {
         // Store the list type
         this.listType = prop.getProperty("list");
 
-        // (We'll only add the ArrayList for now, since it's the one you've built)
         if (this.listType.equals("arraylist")) {
             this.bodies = new ArrayList<>();
         } else if (this.listType.equals("single")) {
             this.bodies = new LinkedList<>();
         } else if (this.listType.equals("double")) {
-            this.bodies = new DoublyLinkedList<>(); //add TODO
+            this.bodies = new DoublyLinkedList<>();
         } else if (this.listType.equals("dummyhead")) {
-            this.bodies = new DummyHeadLinkedList<>(); // TODO
+            this.bodies = new DummyHeadLinkedList<>(); 
         } else {
             // Default to ArrayList if the property is unknown
             System.err.println("Unknown list type. Defaulting to ArrayList.");
@@ -163,7 +162,6 @@ public class MassiveMotion extends JPanel implements ActionListener {
                     body.y > windowSizeY; // Too far down
 
             if (isOffScreen) {
-                // Remove any celestial object that goes off-screen [cite: 72]
                 this.bodies.remove(i);
             }
         }
