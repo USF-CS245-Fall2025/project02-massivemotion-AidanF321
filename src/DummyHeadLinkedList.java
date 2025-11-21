@@ -20,12 +20,18 @@ public class DummyHeadLinkedList<T> implements List<T> {
         this.size = 0;
     }
 
+    /**
+     * @return The number of elements in the list
+     */
     @Override
     public int size() {
         return this.size;
     }
-
     
+    /**
+     * @param index The index at which to insert the element
+     * @param element The element to insert
+     */
     @Override
     public void add(int index, T element) {
         if (index < 0 || index > this.size) {
@@ -47,8 +53,8 @@ public class DummyHeadLinkedList<T> implements List<T> {
     }
 
     /**
-     * Adds an element to the end of the list
-     * This is now an O(n) operation because we lost our tail pointer
+     * @param element The element to add
+     * @return true after adding the element
      */
     @Override
     public boolean add(T element) {
@@ -58,7 +64,8 @@ public class DummyHeadLinkedList<T> implements List<T> {
     }
 
     /**
-     * Gets the element at a specific index
+     * @param index The index of the element to retrieve
+     * @return The element at the specified index
      */
     @Override
     public T get(int index) {
@@ -78,7 +85,8 @@ public class DummyHeadLinkedList<T> implements List<T> {
     }
 
     /**
-     * Removes the element at a specific index
+     * @param index The index of the element to remove
+     * @return The removed element
      */
     @Override
     public T remove(int index) {

@@ -20,11 +20,18 @@ public class LinkedList<T> implements List<T> {
         this.size = 0;
     }
 
+    /**
+     * @return The number of elements in the list
+     */
     @Override
     public int size() {
         return this.size;
     }
 
+    /**
+     * @param element The element to add
+     * @return true after adding the element
+     */
     @Override
     public boolean add(T element) {
         Node newNode = new Node(element);

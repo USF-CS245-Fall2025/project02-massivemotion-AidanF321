@@ -4,6 +4,9 @@ public class ArrayList<T> implements List<T> {
     private int size;
     private int capacity = 10;// start with 10
 
+    /**
+     * Constructor for ArrayList
+     */
     public ArrayList() {
         this.array = new Object[capacity];
         this.size = 0;
@@ -41,6 +44,10 @@ public class ArrayList<T> implements List<T> {
         // [elements before] [new element] [copied elements after]
     }
 
+    /**
+     * @param index The index at which to insert the element
+     * @param element The element to insert
+     */
     @Override
     public void add(int index, T element) { // insert method
         if (index < 0 || index > this.size) {// check if valid index
@@ -56,6 +63,10 @@ public class ArrayList<T> implements List<T> {
 
     }
 
+    /**
+     * @param element The element to add
+     * @return true after adding the element
+     */
     @Override
     public boolean add(T element) {// add to the end of list
         //call helper methods
@@ -70,6 +81,10 @@ public class ArrayList<T> implements List<T> {
         return true;
     }
 
+    /**
+     * @param index The index of the element to retrieve
+     * @return The element at the specified index
+     */
     @Override
     public T get(int index) {
         if (index >= 0 && index < this.size()) {// if valid input
@@ -81,6 +96,10 @@ public class ArrayList<T> implements List<T> {
         }
     }
 
+    /**
+     * @param index The index of the element to remove
+     * @return The removed element
+     */
     @Override
     public T remove(int index) {
         //if index valid
@@ -105,6 +124,9 @@ public class ArrayList<T> implements List<T> {
         return elementToRemove;
     }
 
+    /**
+     * @return The number of elements in the list
+     */
     public int size() {
         return size;
     }

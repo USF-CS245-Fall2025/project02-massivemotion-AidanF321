@@ -8,7 +8,7 @@ import java.util.Properties;
 import java.util.Random;
 
 public class MassiveMotion extends JPanel implements ActionListener {
-
+    // initialize all variables that you gave us in file
     protected Timer tm;
     protected int x1, x2, y1, y2;
     protected static int windowSizeX;
@@ -30,9 +30,13 @@ public class MassiveMotion extends JPanel implements ActionListener {
 
     protected String listType;
 
-    protected List<CelestialBody> bodies;
+    protected List<CelestialBody> bodies;//List type so that we can easily switch between different implementations
     protected Random rand;
 
+    /**
+     * Constructor for the MassiveMotion class
+     * @param propfile The path to the properties file
+     */
     public MassiveMotion(String propfile) {
         // Use Properties to load an input file
         Properties prop = new Properties();
@@ -44,7 +48,7 @@ public class MassiveMotion extends JPanel implements ActionListener {
             System.out.println("Trouble reading the file");
         }
 
-        // pass values from config file to variables
+        // pass values from config file to variables by parsing
         int timerDelay = Integer.parseInt(prop.getProperty("timerDelay"));
 
         windowSizeX = Integer.parseInt(prop.getProperty("windowSizeX"));
@@ -71,6 +75,7 @@ public class MassiveMotion extends JPanel implements ActionListener {
         // Store the list type
         this.listType = prop.getProperty("list");
 
+        //switch between the different list types based on file given/what you write
         if (this.listType.equals("arraylist")) {
             this.bodies = new ArrayList<>();
         } else if (this.listType.equals("single")) {
@@ -98,7 +103,11 @@ public class MassiveMotion extends JPanel implements ActionListener {
         this.bodies.add(star); //add star as first in list
     }
 
-    @Override
+    /**
+     * This method is called whenever the panel needs to be redrawn
+     * @param g The Graphics object to draw on
+     */
+    @Override//you wrote this method and allowed us to change
     public void paintComponent(Graphics g) {
         super.paintComponent(g); // Leave this
 
@@ -114,6 +123,10 @@ public class MassiveMotion extends JPanel implements ActionListener {
         tm.start();
     }
     
+    /**
+     * This method is called whenever the timer "ticks"
+     * @param actionEvent The ActionEvent object 
+     */
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
 

@@ -2,11 +2,11 @@
 # MassiveMotion
 CS 245 Project 02 
 
-    - This project is a 2D animation of a star system, built in Java using Swing and AWT. The goal is to implement and test four different versions of the List data structure.
+ - This project is a 2D animation of a star system, built in Java using Swing and AWT. The goal is to implement and test four different versions of the List data structure.
 
-    The simulation reads all configuration (like window size, star position, and comet generation probability) from a properties file. It features a single stationary star and randomly generated comets that are added to and removed from the active list.
+     The simulation reads all configuration (like window size, star position, and comet generation probability) from a properties file. It features a single stationary star and randomly generated comets that are added to and removed from the active list.
 
-    - Link to ScreenRecording: https://drive.google.com/file/d/1HaAlMnUwRfeSAf8R6GLsB1WKjmTDhnLD/view?usp=sharing
+  - Link to ScreenRecording: https://drive.google.com/file/d/1HaAlMnUwRfeSAf8R6GLsB1WKjmTDhnLD/view?usp=sharing
 
 Running
 - it takes in the first argument (arg[0]), the txt file conatining all the specifications for the sizes and vectors of the stars

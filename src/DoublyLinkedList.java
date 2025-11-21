@@ -15,12 +15,18 @@ public class DoublyLinkedList<T> implements List<T> {
     Node tail;
     int size;
 
+    /**
+     * Constructor for DoublyLinkedList
+     */
     public DoublyLinkedList() {
         this.head = null;
         this.tail = null;
         this.size = 0;
     }
 
+    /**
+     * @return The number of elements in the list
+     */
     @Override
     public int size() {
         return this.size;
@@ -49,6 +55,10 @@ public class DoublyLinkedList<T> implements List<T> {
         }
     }
 
+    /**
+     * @param index The index of the element to retrieve
+     * @return The element at the specified index
+     */
     @Override
     public T get(int index) {
         if (index < 0 || index >= this.size) {
@@ -58,6 +68,10 @@ public class DoublyLinkedList<T> implements List<T> {
         return getNode(index).data;
     }
 
+    /**
+     * @param element The element to add
+     * @return true after adding the element
+     */
     @Override
     public boolean add(T element) {
         Node newNode = new Node(element);
@@ -81,6 +95,10 @@ public class DoublyLinkedList<T> implements List<T> {
         return true;
     }
 
+    /**
+     * @param index The index at which to insert the element
+     * @param element The element to insert
+     */
     @Override
     public void add(int index, T element) {
         // index (0 to the size)
