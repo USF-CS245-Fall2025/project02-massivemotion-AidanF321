@@ -138,7 +138,11 @@ public class DoublyLinkedList<T> implements List<T> {
 
         this.size++;
     }
-    
+
+    /**
+     * @param index The index of the element to remove
+     * @return The removed element
+     */
     @Override
     public T remove(int index) {
         // Must be a valid, existing element

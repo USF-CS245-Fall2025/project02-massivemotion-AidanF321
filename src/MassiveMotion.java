@@ -183,6 +183,12 @@ public class MassiveMotion extends JPanel implements ActionListener {
         repaint();
     }
 
+    /**
+     * Creates a random comet at the specified position with random velocity.
+     * @param x The x-coordinate of the comet's starting position
+     * @param y The y-coordinate of the comet's starting position
+     * @return A new CelestialBody representing the comet
+     */
     private CelestialBody createRandomComet(int x, int y) {
         int velocityX = 0;
         // Velocity must be random between -body_velocity and +body_velocity,

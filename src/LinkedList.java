@@ -49,6 +49,11 @@ public class LinkedList<T> implements List<T> {
         this.size++;
         return true;
     }
+
+    /**
+     * @param index The index at which to insert the element
+     * @param element The element to insert
+     */
     @Override
     public void add(int index, T element) {
         // if index valid
@@ -88,6 +93,10 @@ public class LinkedList<T> implements List<T> {
         this.size++;
     }
 
+    /**
+     * @param index The index of the element to remove
+     * @return The removed element
+     */
     @Override
     public T remove(int index) {
         if (index < 0 || index >= this.size) {
@@ -129,6 +138,10 @@ public class LinkedList<T> implements List<T> {
         return dataToReturn;
     }
 
+    /**
+     * @param index The index of the element to retrieve
+     * @return The element at the specified index
+     */
     @Override
     public T get(int index) {
         // if the index is valid

@@ -12,7 +12,10 @@ public class ArrayList<T> implements List<T> {
         this.size = 0;
     }
 
-    // helper method to check if ArrayList is full and resizes
+    /**
+     * Checks if the internal array is full.
+     * @return true if the internal array is full, false otherwise
+     */
     private boolean isFull() {
         if (this.size() == capacity) {
             return true;
@@ -20,7 +23,10 @@ public class ArrayList<T> implements List<T> {
         return false;
     }
 
-    // helper method - double capacity
+    /**
+     * Resizes the internal array to double its current capacity.
+     * @return void
+     */
     private void reSize() {
         capacity *= 2;
         Object[] tempArr = new Object[capacity];
@@ -31,7 +37,11 @@ public class ArrayList<T> implements List<T> {
         array = tempArr; // point array to new array
     }
 
-    // helper insert method
+    /**
+     * Inserts an element at the specified index, shifting elements as necessary.
+     * @param index The index at which to insert the element
+     * @param element The element to insert
+     */
     private void insert(int index, T element) {
 
         // Shift elements to the right, starting from the end
