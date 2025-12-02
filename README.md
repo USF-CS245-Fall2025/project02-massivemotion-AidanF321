@@ -10,11 +10,11 @@ CS 245 Project 02
 
 Construction
 - 1. cd project02-massivemotion-AidanF321/src
-    Change directory into file source
+- Change directory into file source
 - 3. javac src/*.java
-    compile all files
+- compile all files
 - 4. java MassiveMotion MassiveMotion.txt
-    run code with input parameters from a txt as the first argument
+- run code with input parameters from a txt as the first argument
 
 
 Structure
