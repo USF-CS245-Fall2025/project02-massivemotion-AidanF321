@@ -8,9 +8,14 @@ CS 245 Project 02
 
   - Link to ScreenRecording: https://drive.google.com/file/d/1HaAlMnUwRfeSAf8R6GLsB1WKjmTDhnLD/view?usp=sharing
 
-Running
-- it takes in the first argument (arg[0]), the txt file conatining all the specifications for the sizes and vectors of the stars
-- Ex. "java MassiveMotion MassiveMotion.txt"
+Construction
+- 1. cd project02-massivemotion-AidanF321/src
+    Change directory into file source
+- 3. javac src/*.java
+    compile all files
+- 4. java MassiveMotion MassiveMotion.txt
+    run code with input parameters from a txt as the first argument
+
 
 Structure
 
@@ -30,7 +35,7 @@ Lists
 - LinkedList.java
     - A singly-linked list implementation with head and tail pointers. It has an O(1) add(T) (add to end) but O(n) for get(), remove(), and add(int, T)
 - DoublyLinkedList
-    - A doubly-linked list with head and tail pointers. It has O(1) add(T) and an optimized O(n/2) get() by searching from the head or tail, whichever is closer.
+    - A doubly-linked list with head and tail pointers. It has O(1) add(T) and an optimized O(n) get() by searching from the head or tail, whichever is closer.
 - DummyHeadLinkedList
     - A singly-linked list that uses a "sentinel" or "dummy" head node. This simplifies the add(int, T) and remove(int) methods by removing the special case for index == 0.
 

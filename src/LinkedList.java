@@ -29,6 +29,7 @@ public class LinkedList<T> implements List<T> {
     }
 
     /**
+     * Adds an element at end of list
      * @param element The element to add
      * @return true after adding the element
      */
@@ -36,13 +37,11 @@ public class LinkedList<T> implements List<T> {
     public boolean add(T element) {
         Node newNode = new Node(element);
 
-        if (this.size == 0) { // the list is empty
+        if (this.size == 0) { 
             this.head = newNode;
             this.tail = newNode;
-        } else { // the list is not empty
-            // link newNode to be tail
+        } else { 
             this.tail.next = newNode;
-            // update tail
             this.tail = newNode;
         }
 
@@ -51,30 +50,28 @@ public class LinkedList<T> implements List<T> {
     }
 
     /**
+     * Adds an element at a specific index
      * @param index The index at which to insert the element
      * @param element The element to insert
      */
     @Override
     public void add(int index, T element) {
-        // if index valid
         if (index < 0 || index > this.size) {
             throw new IndexOutOfBoundsException("Index is valid" + this.size);
         }  
-        //best case
         if (index == this.size) {
-            this.add(element); // call other add method
-            return; //break since task is complete
+            this.add(element); 
+            return; 
         }
 
         // if reached this point, inserting a node
         Node newNode = new Node(element);
 
-        // add in beginning 
+
         if (index == 0) {
-            newNode.next = this.head; // New node points to the old head
-            this.head = newNode;     // The new node is now the head
+            newNode.next = this.head;
+            this.head = newNode;
         } else {
-            //add to middle
             
             // Find the node before insertion point
             Node prev = this.head;
@@ -82,14 +79,10 @@ public class LinkedList<T> implements List<T> {
                 prev = prev.next;
             }
 
-            // Stitch the new node into the list:
-            // 1. Link new node to the rest of the list
             newNode.next = prev.next;
-            // 2. Link the previous part of the list to the new node
             prev.next = newNode;
         }
 
-        // 5. Increment the size (only if we didn't call the other add method)
         this.size++;
     }
 
@@ -106,17 +99,13 @@ public class LinkedList<T> implements List<T> {
         T dataToReturn;
 
         if (index == 0) {
-            // Case 1: Remove head
             dataToReturn = this.head.data;
-            this.head = this.head.next; // Move head pointer
+            this.head = this.head.next; 
 
             if (this.size == 1) {
-                // If the list is now empty, update tail as well.
                 this.tail = null;
             }
         } else {
-            // Case 2: Removing from the middle or end.
-            // find node right before the index node(node being removed)
             Node prev = this.head;
             for (int i = 0; i < index - 1; i++) {
                 prev = prev.next;
@@ -125,11 +114,9 @@ public class LinkedList<T> implements List<T> {
             Node nodeToRemove = prev.next;
             dataToReturn = nodeToRemove.data;
 
-            // "Skip" the node to remove
             prev.next = nodeToRemove.next;
 
             if (index == this.size - 1) {
-                // if removed the tail, update the tail pointer
                 this.tail = prev;
             }
         }
@@ -149,10 +136,9 @@ public class LinkedList<T> implements List<T> {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + this.size);
         }
 
-        // traverse the list from the head
         Node current = this.head;
         for (int i = 0; i < index; i++) {
-            current = current.next; // move to the next node
+            current = current.next; 
         }
 
         return current.data;

@@ -50,10 +50,8 @@ public class MassiveMotion extends JPanel implements ActionListener {
 
         // pass values from config file to variables by parsing
         int timerDelay = Integer.parseInt(prop.getProperty("timerDelay"));
-
         windowSizeX = Integer.parseInt(prop.getProperty("windowSizeX"));
         windowSizeY = Integer.parseInt(prop.getProperty("windowSizeY"));
-
         genX = Double.parseDouble(prop.getProperty("genX"));
         genY = Double.parseDouble(prop.getProperty("genY"));
         bodySize = Integer.parseInt(prop.getProperty("bodySize"));
@@ -138,7 +136,7 @@ public class MassiveMotion extends JPanel implements ActionListener {
 
             // 50% chance to come from the bottom edge 
             if (rand.nextBoolean()) {
-                y = windowSizeY;// size because bottom
+                y = windowSizeY;
             }
 
             this.bodies.add(createRandomComet(x, y));
@@ -169,10 +167,10 @@ public class MassiveMotion extends JPanel implements ActionListener {
             body.y += body.velocityY;
 
             // Check if the body has moved "beyond the canvas" 
-            boolean isOffScreen = body.x < 0 - body.size || // Too far left
-                    body.x > windowSizeX || // Too far right
-                    body.y < 0 - body.size || // Too far up
-                    body.y > windowSizeY; // Too far down
+            boolean isOffScreen = body.x < 0 - body.size || 
+                    body.x > windowSizeX || 
+                    body.y < 0 - body.size ||
+                    body.y > windowSizeY; 
 
             if (isOffScreen) {
                 this.bodies.remove(i);
@@ -208,28 +206,22 @@ public class MassiveMotion extends JPanel implements ActionListener {
 
     public static void main(String[] args) {
         
-        // 1. Check for the command-line argument
         if (args.length < 1) {
             System.err.println("Error: Missing properties file name.");
             System.err.println("Usage: java MassiveMotion <filename.txt>");
-            System.exit(1); // Exit the program with an error
+            System.exit(1); 
         }
         
         System.out.println("Massive Motion starting...");
         
-        // 2. Create the MassiveMotion object using the argument
-        // This will load all the properties, including windowSizeX/Y
         MassiveMotion mm = new MassiveMotion(args[0]);
 
-        // 3. Create the window frame
         JFrame jf = new JFrame();
         jf.setTitle("Massive Motion");
         
-        // 4. Set the size USING THE VARIABLES from the properties file
-        // This works because you correctly made windowSizeX/Y static
+
         jf.setSize(windowSizeX, windowSizeY);
         
-        // 5. Add the panel to the frame and show it
         jf.add(mm);
         jf.setVisible(true);
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

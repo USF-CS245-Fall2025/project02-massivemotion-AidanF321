@@ -32,9 +32,9 @@ public class ArrayList<T> implements List<T> {
         Object[] tempArr = new Object[capacity];
 
         for (int i = 0; i < this.size(); i++) {
-            tempArr[i] = array[i];// copy all elements into temp array
+            tempArr[i] = array[i];
         }
-        array = tempArr; // point array to new array
+        array = tempArr; 
     }
 
     /**
@@ -44,31 +44,30 @@ public class ArrayList<T> implements List<T> {
      */
     private void insert(int index, T element) {
 
-        // Shift elements to the right, starting from the end
         for (int i = this.size; i > index; i--) {
             array[i] = array[i - 1];
         }
 
-        array[index] = element;// insert element to array and increment size
+        array[index] = element;
         size++;
-        // [elements before] [new element] [copied elements after]
     }
 
     /**
+     * Adds an element at the specified index.
      * @param index The index at which to insert the element
      * @param element The element to insert
      */
     @Override
-    public void add(int index, T element) { // insert method
-        if (index < 0 || index > this.size) {// check if valid index
+    public void add(int index, T element) { 
+        if (index < 0 || index > this.size) {
             throw new IndexOutOfBoundsException("Index is Invalid");
         }
 
-        if (this.isFull()) {// full list
+        if (this.isFull()) {
             this.reSize();
-            insert(index, element);// insert
-        } else {// list with room to spare
-            insert(index, element);//
+            insert(index, element);
+        } else {
+            insert(index, element);
         }
 
     }
@@ -78,12 +77,10 @@ public class ArrayList<T> implements List<T> {
      * @return true after adding the element
      */
     @Override
-    public boolean add(T element) {// add to the end of list
+    public boolean add(T element) {
         //call helper methods
         if (this.isFull()) {
             this.reSize();
-
-            // add element to array and increment size
             array[size++] = element;
         } else {
             array[size++] = element;
@@ -97,7 +94,7 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public T get(int index) {
-        if (index >= 0 && index < this.size()) {// if valid input
+        if (index >= 0 && index < this.size()) {
             T element = (T) array[index];
             return element;
         } else {
@@ -117,20 +114,14 @@ public class ArrayList<T> implements List<T> {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + this.size);
         }
 
-        // get element
         T elementToRemove = (T) array[index];
 
-        // shift elements left
         for (int i = index; i < this.size - 1; i++) {
             array[i] = array[i + 1];
         }
 
-        // decrement size
         this.size--;
-
-        // clear old eleent
         array[this.size] = null;
-
         return elementToRemove;
     }
 

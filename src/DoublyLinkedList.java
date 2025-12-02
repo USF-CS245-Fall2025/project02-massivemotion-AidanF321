@@ -35,6 +35,8 @@ public class DoublyLinkedList<T> implements List<T> {
     /**
      * Private helper method to get the Node at a specific index.
      * Optimizes by searching from the head or tail, whichever is closer.
+     * @param index The index of the node to retrieve
+     * @return The Node at the specified index
      */
     private Node getNode(int index) {
 
@@ -76,18 +78,15 @@ public class DoublyLinkedList<T> implements List<T> {
     public boolean add(T element) {
         Node newNode = new Node(element);
 
-        if (this.size == 0) {// empty list
+        if (this.size == 0) {
             this.head = newNode;
             this.tail = newNode;
-        } else { // not empty
+        } else { 
 
-            // Link the old tail to the new node
             this.tail.next = newNode;
 
-            // Link the new node back to the old tail
             newNode.prev = this.tail;
 
-            // Update the tail to be the new node
             this.tail = newNode;
         }
 
@@ -101,13 +100,11 @@ public class DoublyLinkedList<T> implements List<T> {
      */
     @Override
     public void add(int index, T element) {
-        // index (0 to the size)
         if (index < 0 || index > this.size) {
             throw new IndexOutOfBoundsException("Index is invalid");
         }
 
         if (index == this.size) {
-            //add to end (same as before)
             this.add(element);
             return;
         }
@@ -115,23 +112,15 @@ public class DoublyLinkedList<T> implements List<T> {
         Node newNode = new Node(element);
 
         if (index == 0) {
-            // add to front
             newNode.next = this.head;
             this.head.prev = newNode;
             this.head = newNode;
         } else {
-            // the insertion portion
             
-            // Find node at the index we want to insert
             Node nodeAtIndex = getNode(index);
-            // Get the node before it
             Node prevNode = nodeAtIndex.prev;
-
-            // Link the node like a sandwhich
             newNode.next = nodeAtIndex;
             newNode.prev = prevNode;
-
-            // put the sandwhich together
             prevNode.next = newNode;
             nodeAtIndex.prev = newNode;
         }
@@ -149,8 +138,6 @@ public class DoublyLinkedList<T> implements List<T> {
         if (index < 0 || index >= this.size) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + this.size);
         }
-
-        // Get the node we want to remove
         Node nodeToRemove = getNode(index);
         T dataToReturn = nodeToRemove.data;
 
@@ -171,7 +158,6 @@ public class DoublyLinkedList<T> implements List<T> {
             Node prevNode = nodeToRemove.prev;
             Node nextNode = nodeToRemove.next;
             
-            // "Skip" the nodeToRemove
             prevNode.next = nextNode;
             nextNode.prev = prevNode;
         }

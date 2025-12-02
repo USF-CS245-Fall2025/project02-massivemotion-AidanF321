@@ -11,7 +11,7 @@ public class DummyHeadLinkedList<T> implements List<T> {
     }
 
     private Node dummyHead; 
-    private int size;       // The count of real elements
+    private int size;       
 
    
     public DummyHeadLinkedList() {
@@ -29,6 +29,7 @@ public class DummyHeadLinkedList<T> implements List<T> {
     }
     
     /**
+     * adds an element at a specific index
      * @param index The index at which to insert the element
      * @param element The element to insert
      */
@@ -37,14 +38,10 @@ public class DummyHeadLinkedList<T> implements List<T> {
         if (index < 0 || index > this.size) {
             throw new IndexOutOfBoundsException("Index is invalid");
         }
-
-        // Find node before insertion point
         Node prev = this.dummyHead;
         for (int i = 0; i < index; i++) {
             prev = prev.next;
         }
-
-        // sandwhich the node in
         Node newNode = new Node(element);
         newNode.next = prev.next;
         prev.next = newNode;
@@ -53,12 +50,12 @@ public class DummyHeadLinkedList<T> implements List<T> {
     }
 
     /**
+     * adds an element to the end of the list
      * @param element The element to add
      * @return true after adding the element
      */
     @Override
     public boolean add(T element) {
-        // This is a simple (but O(n)) way to add to the end
         add(this.size, element);
         return true;
     }
@@ -72,11 +69,8 @@ public class DummyHeadLinkedList<T> implements List<T> {
         if (index < 0 || index >= this.size) {
             throw new IndexOutOfBoundsException("Index is invalid ");
         }
-
-        // start at first real value
         Node current = this.dummyHead.next;
         
-        //traverse to index
         for (int i = 0; i < index; i++) {
             current = current.next;
         }
@@ -85,6 +79,7 @@ public class DummyHeadLinkedList<T> implements List<T> {
     }
 
     /**
+     * remove element at a specific index
      * @param index The index of the element to remove
      * @return The removed element
      */
@@ -94,17 +89,14 @@ public class DummyHeadLinkedList<T> implements List<T> {
             throw new IndexOutOfBoundsException("Index is invalid ");
         }
 
-        // find node before index
         Node prev = this.dummyHead;
         for (int i = 0; i < index; i++) {
             prev = prev.next;
         }
 
-        // 2. Get the node to remove and its data
         Node nodeToRemove = prev.next;
         T dataToReturn = nodeToRemove.data;
         
-        // 3. skip the node
         prev.next = nodeToRemove.next;
 
         this.size--;
